@@ -1,0 +1,42 @@
+{
+  "$id": "https://arkhamdb.com/schemas/base.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Arkham Horror LCG Base Schema",
+  "description": "Base schema with common definitions for Arkham Horror LCG data",
+  "$defs": {
+    "code": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Unique identifier code for an item"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Display name of an item"
+    },
+    "position": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Position within a sequence or ordering"
+    },
+    "quantity": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Number of copies of an item"
+    },
+    "text_property": {
+      "oneOf": [
+        { "type": "string", "minLength": 1 },
+        { "type": "null" }
+      ],
+      "description": "Optional text property that can be null"
+    },
+    "integer_property": {
+      "oneOf": [
+        { "type": "integer" },
+        { "type": "null" }
+      ],
+      "description": "Optional integer property that can be null"
+    }
+  }
+}

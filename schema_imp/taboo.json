@@ -1,0 +1,35 @@
+{
+  "$id": "https://arkhamdb.com/schemas/taboo.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Arkham Horror LCG Taboo Schema",
+  "description": "Schema for taboo lists in Arkham Horror LCG",
+  "type": "object",
+  "properties": {
+    "code": { "$ref": "base.json#/$defs/code" },
+    "name": { "$ref": "base.json#/$defs/name" },
+    "date_start": { "type": "string", "format": "date" },
+    "active": { "type": "integer", "enum": [0, 1] },
+    "cards": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": { "$ref": "card.json#/$defs/card_code" },
+          "xp": { "type": "integer" },
+          "deck_limit": { "type": "integer", "minimum": 0 },
+          "text": { "type": "string" },
+          "exceptional": { "type": "boolean" },
+          "replacement_text": { "type": "string" },
+          "deck_options": { "type": "array" },
+          "deck_requirements": { "type": "object" },
+          "customization_options": { "type": "array" },
+          "customization_text": { "type": "string" },
+          "customization_change": { "type": "string" },
+          "text_change": { "type": "string" }
+        },
+        "required": ["code"]
+      }
+    }
+  },
+  "required": ["code", "name", "date_start", "active", "cards"]
+}

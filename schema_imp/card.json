@@ -1,0 +1,168 @@
+{
+  "$id": "https://arkhamdb.com/schemas/card.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Arkham Horror LCG Card Schema",
+  "description": "Schema for cards in Arkham Horror LCG",
+  "type": "object",
+  "additionalProperties": true,
+  "$defs": {
+    "card_code": {
+      "type": "string",
+      "pattern": "^[0-9a-z]{5}[0-9a-z]?$",
+      "description": "Unique identifier for a card"
+    },
+    "skill_value": {
+      "oneOf": [
+        { "type": "integer", "minimum": -2 },
+        { "type": "null" }
+      ],
+      "description": "Skill value that can be -2 (for X), a non-negative integer, or null"
+    },
+    "enemy_value": {
+      "oneOf": [
+        { "type": "integer", "minimum": -2 },
+        { "type": "null" }
+      ],
+      "description": "Enemy stat value that can be -2 (for X), a non-negative integer, or null"
+    },
+    "health_sanity_value": {
+      "oneOf": [
+        { "type": "integer", "minimum": -2 },
+        { "type": "null" }
+      ],
+      "description": "Health or sanity value that can be -2 (for X), a positive integer, or null"
+    },
+    "deck_options": {
+      "oneOf": [
+        { "type": "array" },
+        { "type": "null" }
+      ],
+      "description": "Array of deck building options or null"
+    }
+  },
+  "properties": {
+    "code": { "$ref": "#/$defs/card_code" },
+    "pack_code": { "$ref": "base.json#/$defs/code" },
+    "type_code": { "$ref": "base.json#/$defs/code" },
+    "faction_code": { "$ref": "base.json#/$defs/code" },
+    "name": { "$ref": "base.json#/$defs/name" },
+    "subname": {
+      "oneOf": [
+        { "type": "string", "minLength": 1 },
+        { "type": "null" }
+      ]
+    },
+    "text": {
+      "oneOf": [
+        { "type": "string", "minLength": 1 },
+        { "type": "null" }
+      ]
+    },
+    "back_text": {
+      "oneOf": [
+        { "type": "string", "minLength": 1 },
+        { "type": "null" }
+      ]
+    },
+    "back_flavor": {
+      "oneOf": [
+        { "type": "string", "minLength": 0 },
+        { "type": "null" }
+      ]
+    },
+    "traits": {
+      "oneOf": [
+        { "type": "string", "minLength": 0 },
+        { "type": "null" }
+      ]
+    },
+    "position": { "$ref": "base.json#/$defs/position" },
+    "quantity": { "$ref": "base.json#/$defs/quantity" },
+    "deck_limit": { "type": "integer", "minimum": 0 },
+    
+    "cost": { "$ref": "#/$defs/skill_value" },
+    "xp": {
+      "oneOf": [
+        { "type": "integer", "minimum": 0 },
+        { "type": "null" }
+      ]
+    },
+    "health": { "$ref": "#/$defs/health_sanity_value" },
+    "sanity": { "$ref": "#/$defs/health_sanity_value" },
+    
+    "skill_willpower": { "$ref": "#/$defs/skill_value" },
+    "skill_intellect": { "$ref": "#/$defs/skill_value" },
+    "skill_combat": { "$ref": "#/$defs/skill_value" },
+    "skill_agility": { "$ref": "#/$defs/skill_value" },
+    "skill_wild": { "type": "integer", "minimum": 0 },
+    
+    "enemy_damage": { "$ref": "#/$defs/enemy_value" },
+    "enemy_horror": { "$ref": "#/$defs/enemy_value" },
+    "enemy_fight": { "$ref": "#/$defs/enemy_value" },
+    "enemy_evade": { "$ref": "#/$defs/enemy_value" },
+    
+    "slot": {
+      "oneOf": [
+        { "type": "string", "minLength": 1 },
+        { "type": "null" }
+      ]
+    },
+    "illustrator": {
+      "pattern": ".*",
+      "type": "string"
+    },
+    "flavor": {
+      "oneOf": [
+        { "type": "string", "minLength": 0 },
+        { "type": "null" }
+      ]
+    },
+    "is_unique": {
+      "oneOf": [
+        { "type": "boolean" },
+        { "type": "null" }
+      ]
+    },
+    "permanent": { "type": "boolean" },
+    "exceptional": { "type": "boolean" },
+    "exile": { "type": "boolean" },
+    "double_sided": { "type": "boolean" },
+    
+    "victory": {
+      "oneOf": [
+        { "type": "integer", "minimum": 0 },
+        { "type": "null" }
+      ]
+    },
+    
+    "restrictions": {
+      "oneOf": [
+        { "type": "string", "minLength": 1 },
+        { "type": "null" }
+      ]
+    },
+    "subtype_code": {
+      "oneOf": [
+        { "type": "string", "minLength": 0 },
+        { "type": "null" }
+      ]
+    },
+    
+    "deck_requirements": {
+      "oneOf": [
+        { "type": "string", "minLength": 0 },
+        { "type": "null" }
+      ]
+    },
+    "deck_options": { "$ref": "#/$defs/deck_options" },
+    
+    "duplicate_of": {
+      "pattern": "^[0-9a-z]{5}[0-9a-z]?$",
+      "type": "string"
+    }
+  },
+  "required": ["code", "pack_code", "position", "quantity"],
+  "dependencies": {
+    "name": ["faction_code", "type_code"]
+  }
+}

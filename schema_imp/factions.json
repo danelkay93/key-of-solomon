@@ -1,0 +1,10 @@
+{
+  "$id": "https://arkhamdb.com/schemas/factions.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Arkham Horror LCG Factions Collection",
+  "description": "Schema for the factions.json file containing all faction data",
+  "type": "array",
+  "items": {
+    "$ref": "faction.json"
+  }
+}

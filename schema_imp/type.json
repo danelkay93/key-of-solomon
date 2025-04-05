@@ -1,0 +1,13 @@
+{
+  "$id": "https://arkhamdb.com/schemas/type.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Arkham Horror LCG Card Type Schema",
+  "description": "Schema for card types in Arkham Horror LCG",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "code": { "$ref": "base.json#/$defs/code" },
+    "name": { "$ref": "base.json#/$defs/name" }
+  },
+  "required": ["code", "name"]
+}

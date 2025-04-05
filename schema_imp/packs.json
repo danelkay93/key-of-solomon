@@ -1,0 +1,10 @@
+{
+  "$id": "https://arkhamdb.com/schemas/packs.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Arkham Horror LCG Packs Collection",
+  "description": "Schema for the packs.json file containing all pack data",
+  "type": "array",
+  "items": {
+    "$ref": "pack.json"
+  }
+}

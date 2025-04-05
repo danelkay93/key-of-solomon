@@ -1,0 +1,10 @@
+{
+  "$id": "https://arkhamdb.com/schemas/types.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Arkham Horror LCG Types Collection",
+  "description": "Schema for the types.json file containing all card type data",
+  "type": "array",
+  "items": {
+    "$ref": "type.json"
+  }
+}

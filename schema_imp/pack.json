@@ -1,0 +1,43 @@
+{
+  "$id": "https://arkhamdb.com/schemas/pack.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Arkham Horror LCG Pack Schema",
+  "description": "Schema for packs in Arkham Horror LCG",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "code": { "$ref": "base.json#/$defs/code" },
+    "cycle_code": { "$ref": "base.json#/$defs/code" },
+    "name": { "$ref": "base.json#/$defs/name" },
+    "position": { "$ref": "base.json#/$defs/position" },
+    "date_release": {
+      "oneOf": [
+        { "type": "string" },
+        { "type": "null" }
+      ],
+      "description": "Release date of the pack"
+    },
+    "size": {
+      "oneOf": [
+        { "type": "integer", "minimum": 1 },
+        { "type": "null" }
+      ],
+      "description": "Number of cards in the pack"
+    },
+    "cgdb_id": {
+      "oneOf": [
+        { "type": "integer" },
+        { "type": "null" }
+      ],
+      "description": "Card Game DB identifier"
+    }
+  },
+  "required": [
+    "code",
+    "cycle_code",
+    "name",
+    "position",
+    "date_release",
+    "size"
+  ]
+}

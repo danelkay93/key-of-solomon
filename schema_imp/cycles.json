@@ -1,0 +1,10 @@
+{
+  "$id": "https://arkhamdb.com/schemas/cycles.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Arkham Horror LCG Cycles Collection",
+  "description": "Schema for the cycles.json file containing all cycle data",
+  "type": "array",
+  "items": {
+    "$ref": "cycle.json"
+  }
+}

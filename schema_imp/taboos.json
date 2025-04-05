@@ -1,0 +1,10 @@
+{
+  "$id": "https://arkhamdb.com/schemas/taboos.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Arkham Horror LCG Taboos Collection",
+  "description": "Schema for the taboos.json file containing all taboo list data",
+  "type": "array",
+  "items": {
+    "$ref": "taboo.json"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "$id": "https://arkhamdb.com/schemas/faction.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Arkham Horror LCG Faction Schema",
+  "description": "Schema for factions in Arkham Horror LCG",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "code": { "$ref": "base.json#/$defs/code" },
+    "name": { "$ref": "base.json#/$defs/name" },
+    "is_primary": { "type": "boolean" },
+    "octgn_id": {
+      "oneOf": [
+        { "type": "integer" },
+        { "type": "null" }
+      ]
+    }
+  },
+  "required": ["code", "name"]
+}

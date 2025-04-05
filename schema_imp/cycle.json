@@ -1,0 +1,23 @@
+{
+  "$id": "https://arkhamdb.com/schemas/cycle.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Arkham Horror LCG Cycle Schema",
+  "description": "Schema for cycles in Arkham Horror LCG",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "code": { "$ref": "base.json#/$defs/code" },
+    "name": { "$ref": "base.json#/$defs/name" },
+    "position": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Position within the overall release timeline"
+    },
+    "size": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Number of packs in the cycle"
+    }
+  },
+  "required": ["code", "name", "position", "size"]
+}

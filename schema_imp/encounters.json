@@ -1,0 +1,10 @@
+{
+  "$id": "https://arkhamdb.com/schemas/encounters.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Arkham Horror LCG Encounters Collection",
+  "description": "Schema for the encounters.json file containing all encounter set data",
+  "type": "array",
+  "items": {
+    "$ref": "encounter.json"
+  }
+}
