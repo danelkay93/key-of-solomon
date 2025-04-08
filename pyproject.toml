@@ -1,34 +1,51 @@
-[project]
-name = "key_of_solomon"
-version = "0.1.0"
-description = "Add your description here"
-requires-python = ">=3.13"
-dependencies = [
-    "datamodel-code-generator[graphql,http,debug]>=0.28.5",
-    "jupyter-collaboration>=3.1.0",
-    "jupyter-lsp>=2.2.5",
-    "notebook>=7.3.3",
-    "tomli>=2.2.1",
-    "pydantic>=2.11.2",
-]
+[tool.poetry.dependencies]
+# Ensure your Python constraint matches the target version
+python = "^3.13"
+datamodel-code-generator = {extras = ["http,graphql"], version = "^0.25.2"} # Or latest; removed [graphql] unless needed
+tomli = "^2.0.1"
+tomli-w = "^1.0.0"
+python-dotenv = "^1.0.0"
+sqlalchemy = "^2.0.25" # Or latest version
+pydantic = "^2.11.2"
+pydantic-settings = "^2.2.1" # Or latest version
+ruff = "^0.4.1" # Or latest version for formatting
 
 [tool.datamodel-codegen]
-use_double_quotes = true
-reuse_model = true
-capitalise_enum_members = true
-use_annotated = true
+# --- Core Settings ---
+# input_file_type = "JsonSchema" # Usually inferred from input file extension
+output_model_type = "PydanticV2BaseModel" # Explicitly Pydantic v2
+target_python_version = "3.13" # Target Python 3.13 consistently
 use_standard_collections = true
 use_union_operator = true
-use_unique_items_as_set = true
-use_subclass_enum = true
-formatters = ["ruff-check", "ruff-format"]
-field_constraints = true
-field_include_all_keys = true
-strip_default_none = false
-snake_case_field = true
-use_field_description = true
-allow_population_by_field_name = true
-use_schema_description = true
+union_mode = "smart" # Recommended union mode
+
+# --- Naming & Structure ---
 use_title_as_name = true
 collapse_root_models = true
+reuse_model = true
+snake_case_field = true
+# class_name = "PascalCase" # Often redundant if use_title_as_name=true
+# field_name = "snake_case" # Redundant if snake_case_field=true
 keep_model_order = false
+
+# --- Features & Validation ---
+use_annotated = true
+field_constraints = true
+use_unique_items_as_set = true
+use_subclass_enum = true
+capitalise_enum_members = true
+allow_population_by_field_name = true # Useful for deserialization
+
+# --- Documentation & Output ---
+use_field_description = true
+use_schema_description = true
+strip_default_none = false
+use_double_quotes = true
+field_include_all_keys = true # Include all schema keys in model
+
+# --- Formatting ---
+# Ensure ruff is configured in your project if using formatters
+# formatters = ["ruff check --fix", "ruff format"]
+
+# --- Aliases (Optional - Reconsider 'number' alias) ---
+# aliases = { "number" = "float" } # Removed - generally safer to let Pydantic infer int/float
