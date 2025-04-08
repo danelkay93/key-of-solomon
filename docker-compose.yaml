@@ -143,7 +143,7 @@ services:
   #
   service:
     container_name: mathesar_service
-    image: mathesar/mathesar:latest
+    image: mathesar/mathesar:v0.1.8 # Pinned version
     environment:
       # First we load the variables configured above.
       <<: *config
@@ -222,7 +222,7 @@ services:
   # https.
   #
   caddy-reverse-proxy:
-    image: mathesar/mathesar-caddy:latest
+    image: mathesar/mathesar-caddy:v0.1.0 # Pinned version
     # This service needs the config variables defined above.
     environment: *config
     ports:
