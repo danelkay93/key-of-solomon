@@ -1,14 +1,26 @@
-[tool.poetry.dependencies]
-# Ensure your Python constraint matches the target version
-python = "^3.13"
-datamodel-code-generator = {extras = ["http,graphql"], version = "^0.25.2"} # Or latest; removed [graphql] unless needed
-tomli = "^2.0.1"
-tomli-w = "^1.0.0"
-python-dotenv = "^1.0.0"
-sqlalchemy = "^2.0.25" # Or latest version
-pydantic = "^2.11.2"
-pydantic-settings = "^2.2.1" # Or latest version
-ruff = "^0.4.1" # Or latest version for formatting
+[project]
+name = "key_of_solomon"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.13"
+dependencies = [
+    "datamodel-code-generator[graphql,http]>=0.28.5",
+    "tomli>=2.2.1",
+    "pydantic>=2.11.2",
+    "pydantic-settings>=2.2.1", # Added pydantic-settings
+    "sqlalchemy>=2.0.25",      # Added based on db_setup.py
+    "python-dotenv>=1.0.0",    # Added based on db_setup.py and notebook
+]
+
+[project.optional-dependencies]
+dev = [
+    "jupyter-collaboration>=3.1.0",
+    "jupyter-lsp>=2.2.5",
+    "notebook>=7.3.3",
+    "uv>=0.1.10",
+    "ruff>=0.4.1", # Updated to match removed block version, use >= for flexibility
+    "tomli-w>=1.0.0", # Added based on notebook usage
+]
 
 [tool.datamodel-codegen]
 # --- Core Settings ---
